@@ -38,32 +38,45 @@
 
 ## 安装
 
-### OpenCode
+### Codex
 
-把 `SKILL.md` 软链到 OpenCode 的 skills 目录即可自动加载:
+把本仓库安装到 Codex 的 skills 目录, 然后重启 Codex:
 
 ```bash
-# macOS / Linux
-ln -s $(pwd)/SKILL.md ~/.cache/opencode/packages/superpowers@*/node_modules/superpowers/skills/auntie-letter-style/SKILL.md
+mkdir -p ~/.codex/skills/auntie-letter-style
+cp SKILL.md README.md EXAMPLES.md ~/.codex/skills/auntie-letter-style/
 ```
 
-> 如果找不到 superpowers 目录, 跑一次 `opencode` 让它初始化即可。
+开发时如果想让本地修改立即同步, 可以改用软链:
+
+```bash
+mkdir -p ~/.codex/skills
+ln -s "$(pwd)" ~/.codex/skills/auntie-letter-style
+```
+
+> 如果目标目录已存在, 先删除旧目录或换一个 skill 名称。Codex 会从 `~/.codex/skills/<skill-name>/SKILL.md` 加载本地 skills。
 
 ### Claude Code
 
-把 `SKILL.md` 软链或复制到 `~/.claude/skills/auntie-letter-style/`:
+把 `SKILL.md` 复制或软链到 `~/.claude/skills/auntie-letter-style/`:
 
 ```bash
 mkdir -p ~/.claude/skills/auntie-letter-style
-ln -s $(pwd)/SKILL.md ~/.claude/skills/auntie-letter-style/SKILL.md
+cp SKILL.md ~/.claude/skills/auntie-letter-style/SKILL.md
 ```
 
-### Codex
+### OpenCode 调试方式
+
+OpenCode 的 superpowers skill 目录通常在 package cache 里, 路径会随版本变化。仅建议本地调试时使用:
 
 ```bash
-mkdir -p ~/.agents/skills/auntie-letter-style
-ln -s $(pwd)/SKILL.md ~/.agents/skills/auntie-letter-style/SKILL.md
+SUPERPOWERS_DIR="$(ls -d ~/.cache/opencode/packages/superpowers@*/node_modules/superpowers/skills 2>/dev/null | head -n 1)"
+test -n "$SUPERPOWERS_DIR" || { echo "先运行一次 opencode 初始化 superpowers"; exit 1; }
+mkdir -p "$SUPERPOWERS_DIR/auntie-letter-style"
+ln -s "$(pwd)/SKILL.md" "$SUPERPOWERS_DIR/auntie-letter-style/SKILL.md"
 ```
+
+> 如果找不到 superpowers 目录, 跑一次 `opencode` 让它初始化即可。
 
 ### 直接当 Prompt 模板
 
