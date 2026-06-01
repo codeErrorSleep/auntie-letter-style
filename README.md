@@ -133,7 +133,7 @@ agent 会自动调用本 skill, 输出 **3 条**调性略有不同的变体。
 auntie-letter-style/
 ├── README.md       # 本文件
 ├── SKILL.md        # 核心 skill 定义 (agent 直接加载这个)
-├── EXAMPLES.md     # 30+ 条分类样例库
+├── EXAMPLES.md     # 83 条分类样例库 (19 个细分场景)
 ├── LICENSE         # MIT
 ├── CHANGELOG.md    # 更新记录
 └── .gitignore

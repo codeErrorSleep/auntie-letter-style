@@ -5,7 +5,7 @@ description: Use when transforming crude, vulgar, or modern colloquial Chinese i
 
 # Auntie Letter Style (给阿嬷的情书风格)
 
-> **版本**: v0.1.0 · **License**: MIT
+> **版本**: v0.2.0 · **License**: MIT
 > 灵感: 2025 电影「给阿嬷的情书」
 
 ## Overview
